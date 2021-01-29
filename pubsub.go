@@ -45,6 +45,16 @@ func New(capacity int) *PubSub {
 	return ps
 }
 
+// Len PubSub already use length
+func (ps *PubSub) Len() int {
+	return len(ps.cmdChan)
+}
+
+// Cap PubSub all capacity
+func (ps *PubSub) Cap() int {
+	return cap(ps.cmdChan)
+}
+
 // Sub returns a channel on which messages published on any of
 // the specified topics can be received.
 func (ps *PubSub) Sub(topics ...string) chan interface{} {
